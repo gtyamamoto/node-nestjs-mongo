@@ -1,0 +1,30 @@
+version: "2.1"
+services:
+  api:
+    restart: always
+    build: .
+    environment:
+      - MONGO_URI=mongodb://db:27017
+    ports:
+      - "3000:3000"
+    depends_on:
+      db:
+          condition: service_healthy
+    networks:
+     - backend
+  db:
+    image: mongo
+    volumes:
+      - db-data:/data/db
+    ports:
+      - "27017:27017"
+    healthcheck:
+        test:
+        - CMD
+        - mongo
+        - --eval
+        - "db.adminCommand('ping')"
+networks:
+    backend:
+volumes: 
+    db-data:
