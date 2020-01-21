@@ -12,6 +12,8 @@ services:
           condition: service_healthy
     networks:
      - backend
+    volumes:
+     - ./uploads:/usr/uploads
   db:
     image: mongo
     volumes:
