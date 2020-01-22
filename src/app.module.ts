@@ -15,7 +15,7 @@ import {MulterModule} from '@nestjs/platform-express'
     MulterModule.register({
       dest: '/uploads',
     }),
-    MongooseModule.forRoot(process.env.MONGO_URI || 'mongodb://localhost:27017'),
+    MongooseModule.forRoot(process.env.MONGO_URI || 'mongodb://localhost:27017/goomer'),
     ProductsModule, RestaurantsModule],
   controllers: [AppController],
   providers: [AppService],
