@@ -6,7 +6,9 @@ import { ProductSchema } from './products.schema';
 import { RestaurantsModule } from 'src/restaurants/restaurants.module';
 
 @Module({
-  imports:[MongooseModule.forFeature([{name:'Product',schema:ProductSchema}]),RestaurantsModule],
+  imports:[ MulterModule.register({
+    dest: './uploads',
+  }), MongooseModule.forFeature([{name:'Product',schema:ProductSchema}]),RestaurantsModule],
   controllers: [ProductsController],
   providers: [ProductsService]
 })
