@@ -4,6 +4,7 @@ import { ProductsService } from './products.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ProductSchema } from './products.schema';
 import { RestaurantsModule } from 'src/restaurants/restaurants.module';
+import { MulterModule } from '@nestjs/platform-express';
 
 @Module({
   imports:[ MulterModule.register({
