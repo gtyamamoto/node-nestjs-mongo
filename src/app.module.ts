@@ -1,5 +1,4 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
 import {MongooseModule } from '@nestjs/mongoose';
 import { AppService } from './app.service';
 import { ProductsModule } from './products/products.module';
@@ -13,11 +12,10 @@ import {MulterModule} from '@nestjs/platform-express'
       isGlobal: true,
     }),
     MulterModule.register({
-      dest: '/uploads',
+      dest: './uploads',
     }),
-    MongooseModule.forRoot(process.env.MONGO_URI || 'mongodb://localhost:27017/goomer'),
+    MongooseModule.forRoot(process.env.MONGO_URI || 'mongodb://localhost:27017/goomer_rango'),
     ProductsModule, RestaurantsModule],
-  controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}

@@ -11,8 +11,8 @@ export class RestaurantsService {
   };
 
 
-  async create(createRestaurantDto): Promise<Restaurant> {
-    const createdRestaurant = new this.restaurantModel(createRestaurantDto);
+  async create(createRestaurantDto,imageURL=''): Promise<Restaurant> {
+    const createdRestaurant = new this.restaurantModel({...createRestaurantDto,photoURL:imageURL});
     return createdRestaurant.save();
   }
 
@@ -25,10 +25,11 @@ export class RestaurantsService {
   async deleteOne(id: string): Promise<any> {
     return this.restaurantModel.deleteOne({ _id: id }).exec();
   }
-  async updateOne(id: string, updateRestaurantDto): Promise<Restaurant> {
+  async updateOne(id: string, updateRestaurantDto,fileURL=''): Promise<Restaurant> {
     const document = await this.restaurantModel.findOne({ _id: id });
     if (!document) throw new NotFoundException('document not found');
     document._doc = { ...document._doc, ...updateRestaurantDto };
+    if(fileURL) document._doc['photoURL'] = fileURL;
     return document.save();
   }
 }

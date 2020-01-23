@@ -1,7 +1,10 @@
 import * as mongoose from 'mongoose';
 
 export const RestaurantsSchema = new mongoose.Schema({
-  name: String,
+  name: {
+    type:String,
+    unique:true
+  },
   address: String,
   photoURL:String,
   startDay: Number,
