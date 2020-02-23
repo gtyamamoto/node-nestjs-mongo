@@ -1,4 +1,4 @@
-# Goomer Lista Rango
+# Node API with Nestjs + mongo 
 
 
 Projeto backend em Nodejs + Nestjs + Mongo db para realizar o cadastramento em RESTful de produtos e restaurantes
